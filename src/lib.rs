@@ -626,7 +626,7 @@ mod tests {
 
             // create raw payload with AccoundId and sign it          
             let raw_payload = client.create_raw_payload(signer_account_id, balances::transfer::<Runtime>(dest.clone().into(), 10_000)).await?;
-            let raw_signature = signer_pair.sign(raw_payload.encode().split_off(2).as_slice());
+            let raw_signature = signer_pair.sign(raw_payload.as_slice());
             let raw_multisig = MultiSignature::from(raw_signature);
 
             // create signature with Xtbuilder
